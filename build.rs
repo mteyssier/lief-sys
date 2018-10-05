@@ -52,9 +52,10 @@ fn main() {
     };
 
     let lief_c_path = {
-        let path = path::PathBuf::from(LIEF_C_DIR);
+        let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+        let path = path::PathBuf::from(&crate_dir).join(LIEF_C_DIR);
         if !path.exists() {
-            panic!("LIEF source directory not found");
+            panic!("LIEF sdk directory not found");
         }
         path
     };

@@ -1,6 +1,6 @@
 # lief-sys
 
-This is a just low-level binding for Quarkslab's [LIEF](https://lief.quarkslab.com/).
+This is a low-level binding for Quarkslab's [LIEF](https://lief.quarkslab.com/).
 
 ## Example
 
@@ -36,7 +36,7 @@ tar xzf LIEF-0.9.0-Linux.tar.gz -C lief-sdk --strip-components=1
 cargo build
 ```
 
-The binding is tested on Windows and Linux (I hope it works also on OSX, but I've no Mac to check).
+The binding is tested on Windows and Linux (I hope it works also on OSX, but I've no machine to check).
 
 ## Issues
 
