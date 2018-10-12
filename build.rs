@@ -1,7 +1,7 @@
 use bindgen;
 use std::{env, path};
 
-const LIEF_C_DIR: &'static str = "lief-sdk";
+const LIEF_SDK_DIR: &'static str = "lief-sdk";
 const LIEF_C_LIB: &'static str = "LIEF";
 
 fn generate_binding(out_dir_path: &path::Path, lief_c_path: &path::Path) {
@@ -51,21 +51,21 @@ fn main() {
         path::PathBuf::from(out_dir)
     };
 
-    let lief_c_path = {
+    let lief_sdk_path = {
         let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-        let path = path::PathBuf::from(&crate_dir).join(LIEF_C_DIR);
+        let path = path::PathBuf::from(&crate_dir).join(LIEF_SDK_DIR);
         if !path.exists() {
             panic!("LIEF sdk directory not found");
         }
         path
     };
 
-    println!("cargo:rerun-if-changed={}", LIEF_C_DIR);
+    println!("cargo:rerun-if-changed={}", LIEF_SDK_DIR);
 
-    generate_binding(&out_dir_path, &lief_c_path);
+    generate_binding(&out_dir_path, &lief_sdk_path);
 
     let lief_lib_path = {
-        let path = lief_c_path.join("lib");
+        let path = lief_sdk_path.join("lib");
         if !path.exists() {
             panic!("LIEF lib path not found")
         }
