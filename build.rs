@@ -80,6 +80,9 @@ fn main() {
 
     println!("cargo:rustc-link-lib={}={}", "static", LIEF_C_LIB);
 
-    #[cfg(target_family = "unix")]
+    #[cfg(target_os = "macos")]
+    println!("cargo:rustc-link-lib=dylib=c++");
+
+    #[cfg(target_os = "linux")]
     println!("cargo:rustc-link-lib=dylib=stdc++");
 }
