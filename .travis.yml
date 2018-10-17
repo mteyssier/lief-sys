@@ -1,0 +1,14 @@
+language: rust
+rust:
+  - nightly
+
+os:
+  - linux
+  - osx
+  - windows
+
+install:
+  - mkdir lief-sdk
+  - if [ $TRAVIS_OS_NAME = linux ]; then wget https://github.com/lief-project/LIEF/releases/download/0.9.0/LIEF-0.9.0-Linux.tar.gz && tar xzf LIEF-0.9.0-Linux.tar.gz -C lief-sdk --strip-components=1; fi
+  - if [ $TRAVIS_OS_NAME = windows ]; then wget https://github.com/lief-project/LIEF/releases/download/0.9.0/LIEF-0.9.0-win64.zip && unzip LIEF-0.9.0-win64.zip lief-sdk; fi
+  - if [ $TRAVIS_OS_NAME = osx ]; then wget https://github.com/lief-project/LIEF/releases/download/0.9.0/LIEF-0.9.0-Darwin.tar.gz && tar xzf LIEF-0.9.0-Darwin.tar.gz -C lief-sdk --strip-components=1; fi
